@@ -6,11 +6,11 @@ node {
     }
 
     stage('Build') {
-        app = docker.build("myriamsal/TP")
+        app = docker.build("myriamsal/tp")
     }
 
     stage('Test') {
-        docker.image('myriamsal/TP').withRun('--rm -p 80:80 --name devops') { c ->
+        docker.image('myriamsal/tp').withRun('--rm -p 80:80 --name devops') { c ->
         sh 'docker ps'
         sh 'docker exec devops curl localhost:80'
         sh 'echo "Tests passed"'
